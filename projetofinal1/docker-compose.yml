@@ -1,0 +1,18 @@
+
+# Definição do serviço utilizado, bem como da utilização do Dockerfile para construção da imagem "projeto-grafic" 
+# Utilização da porta 8080 para exposição do gráfico
+# Volumes criados e mapeamento para o container
+
+version: '3'
+services:    
+  projeto-grafic:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: projeto-grafic
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/home/node/app.js
+      - ./app:/app
+    command: sh -c "node app.js"
